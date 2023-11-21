@@ -23,6 +23,21 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#Testing
+
+```bash
+npm run build
+```
+then
+```bash
+npm run start
+```
+then
+```bash
+npm run cypress:open
+```
+
+To open Cypress for end-to-end testing, run:
 
 # CustomModal Component
 
