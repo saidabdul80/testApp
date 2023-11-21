@@ -1,8 +1,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Button from './Button';
+import SuccessIcon from './succesIcon';
 //@ts-ignore
-const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{} }) => {
+const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{}, icon='none' }) => {
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef();
   const handleClose = () => {
@@ -25,7 +26,7 @@ const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{} }) =>
     return () => {
       document.removeEventListener('mousedown', handleCloseModal);
     };
-  }, []);
+  }, ['handleClose']);
 
 
 
@@ -44,11 +45,17 @@ const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{} }) =>
         <div className={`fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50 transition-opacity ${isClosing ? 'opacity-0' : 'opacity-100'}`}>
             {/* @ts-ignore */}
           <div ref={modalRef} className="bg-white rounded-md p-6 w-96">
-            <div className="flex justify-end">
-              <button onClick={handleClose}>&times;</button>
-            </div>
-            <div>{children}</div>
-            <div className="flex justify-end mt-4">
+            <div className="flex justify-center mx-auto">
+            {
+              icon == 'success'?
+                <SuccessIcon />
+              :icon == 'error'?
+              ''
+              :''
+            }        
+            </div>    
+            <div className='mt-3 mx-auto text-center'>{children}</div>
+            <div className="flex justify-center mx-auto mt-4">
                 <Button onClick={handleCancel} children='Cancel' color='red' />
                 <Button onClick={handleConfirm} children='Ok' color='green' />
             </div>

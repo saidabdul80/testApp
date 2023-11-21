@@ -37,11 +37,13 @@ const ManageUser = ({ params }: { params: { id: any } }) => {
     e.preventDefault(); 
     let method = 'PUT';
     setMsg('User updated successfully')
+    let url = '/users/'+user?.id
     if(id=='new'){
        method = 'POST';
        setMsg('User created successfully')
+       url = '/users'
     }
-    apiClient.fetchData('/users',method, user).then((response) => {
+    apiClient.fetchData(url,method, user).then((response) => {
       // Handle successful update, e.g., show a success message
       console.log('User updated successfully:', response);
       setShowModal(true)
@@ -56,7 +58,7 @@ const ManageUser = ({ params }: { params: { id: any } }) => {
 
   return (
     <div className="container mx-auto p-4">
-      <CustomModal showModal={showModal} setShowModal={setShowModal} onConfirm={()=>{setShowModal(false)}}>
+      <CustomModal showModal={showModal} icon='success' setShowModal={setShowModal} onConfirm={()=>{setShowModal(false)}}>
             <h2>{title}</h2>
             <p>{msg}!</p>
         </CustomModal>
