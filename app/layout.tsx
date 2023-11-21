@@ -6,7 +6,6 @@ import './globals.css'
 import Header from './components/Header'
 import Sidebar from './components/SideBar'
 import Loader from './components/Loader';
-import CustomModal from './components/CustomModal';
 
 
 const inter = Inter({ subsets: ['latin'] })

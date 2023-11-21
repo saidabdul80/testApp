@@ -5,16 +5,17 @@ import React, { useState, useEffect } from 'react';
 import { HomeIcon, ChartSquareBarIcon, UserIcon, PlusIcon } from '@heroicons/react/solid';
 import SidebarItem from './SidebarItem'; 
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const Sidebar = () => {
   
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('/');
-
+  const pathname = usePathname();
   useEffect(() => {
     setIsOpen(window.innerWidth > 768);
-    setActiveItem(window.location.pathname);
-  }, []);
+    setActiveItem(pathname);
+  }, [pathname]);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);

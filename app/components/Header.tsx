@@ -2,9 +2,11 @@
 'use client';
 import React, {useState} from 'react';
 import {  MenuIcon, XIcon } from '@heroicons/react/solid';
+import { usePathname } from 'next/navigation';
+
 //@ts-ignore
 const Header = ({ isOpen, toggleSidebar }) => {
-    
+  const pathname = usePathname();    
     const handleToggle = () => {
         toggleSidebar(!isOpen); // Emit the open/close event to the parent
       };
@@ -18,7 +20,10 @@ const Header = ({ isOpen, toggleSidebar }) => {
                 <MenuIcon className="w-6 h-6 text-gray-300" />
                 )}
             </button>
-        <p className='text-center'>Header</p>
+            
+        {/* @ts-ignore */}
+        
+        <p className='text-center'>Header section: {pathname.split('/') == '' ? 'Home' : pathname.split('/') }</p>
     </div>
   );
 };
