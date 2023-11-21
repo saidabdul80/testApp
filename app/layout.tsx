@@ -6,6 +6,7 @@ import './globals.css'
 import Header from './components/Header'
 import Sidebar from './components/SideBar'
 import Loader from './components/Loader';
+import CustomModal from './components/CustomModal';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -32,7 +33,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div id='generalLoader' style={{display:'none'}}>
           <Loader></Loader>
-        </div>
+        </div>           
         <div className='flex'>
           {/* Sidebar */}
           <div className={`hidden md:block`}>

@@ -1,23 +1,27 @@
 
-import { useState, useEffect, useRef,useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Button from './Button';
 import SuccessIcon from './succesIcon';
 //@ts-ignore
 const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{}, icon='none' }) => {
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef();
-  const handleClose = useCallback(() => {
+  const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
       setShowModal(false);
       setIsClosing(false);
     }, 300); // Adjust this timeout according to your transition duration
-  },[setIsClosing,setIsClosing,setIsClosing]);
+  };
   useEffect(() => {
     const handleCloseModal = (event:Event) => {
         //@ts-ignore
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        handleClose()
+        setIsClosing(true);
+        setTimeout(() => {
+          setShowModal(false);
+          setIsClosing(false);
+        }, 300); 
       }
     };
 
@@ -26,7 +30,7 @@ const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{}, icon
     return () => {
       document.removeEventListener('mousedown', handleCloseModal);
     };
-  }, [handleClose]);
+  }, [setShowModal,setIsClosing]);
 
 
 
@@ -57,8 +61,8 @@ const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{}, icon
             </div>    
             <div className='mt-3 mx-auto text-center'>{children}</div>
             <div className="flex justify-center mx-auto mt-4">
-                <Button onClick={handleCancel} children='Cancel' color='red' />
-                <Button onClick={handleConfirm} children='Ok' color='green' />
+                <Button onClick={handleCancel}  color='red' > Cancel</Button>
+                <Button onClick={handleConfirm}  color='green' >Ok</Button>
             </div>
           </div>
         </div>
