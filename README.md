@@ -23,17 +23,14 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-#Testing
+
+##Testing
 
 ```bash
 npm run build
-```
-then
-```bash
+#then
 npm run start
-```
-then
-```bash
+#then
 npm run cypress:open
 ```
 
