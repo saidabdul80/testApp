@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.mbtn{
+  transition: all .1s;
+}
+.mbtn:active{
+  scale: 0.8;
+}
