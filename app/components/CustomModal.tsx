@@ -1,18 +1,18 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef,useCallback } from 'react';
 import Button from './Button';
 import SuccessIcon from './succesIcon';
 //@ts-ignore
 const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{}, icon='none' }) => {
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef();
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsClosing(true);
     setTimeout(() => {
       setShowModal(false);
       setIsClosing(false);
     }, 300); // Adjust this timeout according to your transition duration
-  };
+  },[]);
   useEffect(() => {
     const handleCloseModal = (event:Event) => {
         //@ts-ignore
