@@ -12,7 +12,7 @@ const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{}, icon
       setShowModal(false);
       setIsClosing(false);
     }, 300); // Adjust this timeout according to your transition duration
-  },[]);
+  },[setIsClosing,setIsClosing,setIsClosing]);
   useEffect(() => {
     const handleCloseModal = (event:Event) => {
         //@ts-ignore
