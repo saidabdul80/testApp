@@ -26,7 +26,7 @@ const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{}, icon
     return () => {
       document.removeEventListener('mousedown', handleCloseModal);
     };
-  }, ['handleClose']);
+  }, [handleClose]);
 
 
 
