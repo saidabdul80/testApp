@@ -31,6 +31,7 @@ const CustomModal = ({ children, showModal, setShowModal, onConfirm=()=>{}, icon
 
 
   const handleConfirm = () => {
+    //@ts-ignore
     onConfirm(true);
     handleClose();
   };
