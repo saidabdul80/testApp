@@ -76,9 +76,9 @@ const ManagePost = ({ params }: { params: { id: any } }) => {
             onChange={handleInputChange}
             className="w-full border p-2 mb-4"
           />
-          <Button onClick={handleSubmit} children='Submit' color='blue' />
+          <Button onClick={handleSubmit}  color='blue' >Submit</Button>
           <Link href='/posts'>
-            <Button children='Back' color='gray' />
+            <Button  color='gray' > Back</Button>
           </Link>
         </form>
       )}
